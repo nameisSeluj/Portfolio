@@ -1,746 +1,573 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Jules Delapillière</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-/* Override strong tags inside headings to maintain consistent weight */
-h1 strong,
-h2 strong,
-h3 strong {
-	font-weight: 600;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 10px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-
-	table.collection-content {
-		width: 100%;
-		table-layout: fixed;
-	}
-
-	table.collection-content th,
-	table.collection-content td {
-		overflow-wrap: anywhere;
-	}
-
-	table.collection-content td > .user,
-	table.collection-content td > time {
-		white-space: pre-wrap;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content-wrapper {
-	overflow-x: auto;
-}
-
-@media only print {
-	.collection-content-wrapper {
-		overflow-x: visible;
-	}
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.collection-content td {
-	white-space: pre-wrap;
-	word-break: break-word;
-}
-
-.column-list {
-	display: flex;
-	gap: 46px;
-}
-
-.column {
-	min-width: 0;
-	overflow: hidden;
-}
-
-.column > *:first-child {
-	margin-top: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-table {
-	border-collapse: collapse;
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol.numbered-list.numbered-list-digits-2 {
-	padding-inline-start: 2em;
-}
-
-ol.numbered-list.numbered-list-digits-3plus {
-	padding-inline-start: 2.4em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-	margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.callout img.notion-static-icon {
-	width: 1em;
-	height: 1em;
-}
-
-.callout p {
-	margin: 0;
-}
-
-.callout h1,
-.callout h2,
-.callout h3 {
-	margin: 0 0 0.6rem;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-blockquote.quote-large {
-	font-size: 1.25em;
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.highlight-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.highlight-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.highlight-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.highlight-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.highlight-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.highlight-default_background {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray_background {
-	background: rgba(42, 28, 0, 0.07);
-}
-.highlight-brown_background {
-	background: rgba(139, 46, 0, 0.086);
-}
-.highlight-orange_background {
-	background: rgba(224, 101, 1, 0.129);
-}
-.highlight-yellow_background {
-	background: rgba(211, 168, 0, 0.137);
-}
-.highlight-teal_background {
-	background: rgba(0, 100, 45, 0.09);
-}
-.highlight-blue_background {
-	background: rgba(0, 124, 215, 0.094);
-}
-.highlight-purple_background {
-	background: rgba(102, 0, 178, 0.078);
-}
-.highlight-pink_background {
-	background: rgba(197, 0, 93, 0.086);
-}
-.highlight-red_background {
-	background: rgba(223, 22, 0, 0.094);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.block-color-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.block-color-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.block-color-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.block-color-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.block-color-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.block-color-default_background {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray_background {
-	background: rgba(240, 239, 237, 1);
-}
-.block-color-brown_background {
-	background: rgba(245, 237, 233, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 235, 222, 1);
-}
-.block-color-yellow_background {
-	background: rgba(249, 243, 220, 1);
-}
-.block-color-teal_background {
-	background: rgba(232, 241, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(229, 242, 252, 1);
-}
-.block-color-purple_background {
-	background: rgba(243, 235, 249, 1);
-}
-.block-color-pink_background {
-	background: rgba(250, 233, 241, 1);
-}
-.block-color-red_background {
-	background: rgba(252, 233, 231, 1);
-}
-.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
-.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
-.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
-.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
-.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
-.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
-.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
-.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
-.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
-.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style></head><body><article id="2e0abe75-6957-802d-990a-ec831b20c777" class="page sans"><header><div class="page-header-icon undefined"><img class="icon notion-static-icon" src="https://www.notion.so/icons/graduate_purple.svg"/></div><h1 class="page-title" dir="auto">Jules Delapillière</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><hr id="2e0abe75-6957-8106-ad77-df357d489ee6"/></div><div style="display:contents" dir="auto"><div id="2e0abe75-6957-813b-96e1-f2f29c42caf1" class="column-list"><div style="display:contents" dir="auto"><div id="2e0abe75-6957-817b-949a-d5d144627619" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-819d-b436-f22b0c9cc660"><div style="width:100%"><div style="display:contents" dir="ltr"><div id="2e0abe75-6957-81fb-805e-e553391603cc" class="collection-content"><h4 class="collection-title">Categories</h4><div class="collection-content-wrapper"><table class="collection-content"><colgroup><col style="width:100%"/></colgroup><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>Name</th></tr></thead><tbody><tr id="2e0abe75-6957-8153-aab2-ddb02f8e9ec8"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Developpement%202e0abe7569578153aab2ddb02f8e9ec8.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/wrench_pink.svg"/>Developpement</a></td></tr><tr id="2e0abe75-6957-8153-984e-f02be248bf2d"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Optimiser%202e0abe7569578153984ef02be248bf2d.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/globe_blue.svg"/>Optimiser</a></td></tr><tr id="2e0abe75-6957-8192-ae9d-ebabcf9991e6"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Base%20de%20donn%C3%A9e%202e0abe7569578192ae9debabcf9991e6.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/database_purple.svg"/>Base de donnée</a></td></tr><tr id="2e0abe75-6957-81be-823f-d417a00a2be1"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Conduire%20un%20projet%202e0abe75695781be823fd417a00a2be1.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/compose_purple.svg"/>Conduire un projet</a></td></tr><tr id="2e0abe75-6957-8147-9a50-cd6aee5fc427"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Collaborer%202e0abe75695781479a50cd6aee5fc427.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/meeting_blue.svg"/>Collaborer</a></td></tr><tr id="2e0abe75-6957-81a5-902b-c1aed4d080bc"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Administrer%202e0abe75695781a5902bc1aed4d080bc.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/tv_pink.svg"/>Administrer</a></td></tr></tbody></table></div><br/><br/></div></div><div style="display:contents" dir="auto"><hr id="2e0abe75-6957-815a-b9f7-c2625be7c4b3"/></div><div style="display:contents" dir="auto"><div><div style="display:contents" dir="ltr"><figure id="2e0abe75-6957-81a1-888d-c07050f1a252" class="link-to-page"><a href="Jules%20Delapilli%C3%A8re/Tous%20les%20projets%202e0abe75695781a1888dc07050f1a252.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/briefcase_purple.svg"/>Tous les projets</a></figure></div><div style="display:contents" dir="auto"><hr id="2e0abe75-6957-8141-b303-e1f4a0d4effe"/></div></div></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-81b9-83de-e5a8057f398a"><div style="width:100%"><div style="display:contents" dir="auto"><h2 id="2e0abe75-6957-81e4-83d6-e6c2c9685330" class=""><mark class="highlight-purple">Contact Info</mark></h2></div></div></figure></div><div style="display:contents" dir="auto"><div><div style="display:contents" dir="ltr"><figure class="block-color-default_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-81ca-9375-c0b933062bb4"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://www.notion.so/icons/invitation_purple.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2e0abe75-6957-81a9-b968-f637a4fa8691" class=""><a href="mailto:jules.delapilliere@etudiant.univ-rennes.fr">jules.delapilliere@etudiant.univ-rennes.fr</a><strong> </strong></p></div></div></figure></div></div></div><div style="display:contents" dir="auto"><div><div style="display:contents" dir="ltr"><figure class="block-color-default_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-815a-a8b3-eb5377661842"><div style="font-size:1.5em"><img class="icon" src="Jules%20Delapilli%C3%A8re/Github.webp"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2e0abe75-6957-8115-b6e3-e11c1dcd7912" class=""><a href="https://github.com/nameisSeluj">nameisSeluj</a></p></div></div></figure></div></div></div><div style="display:contents" dir="auto"><div><div style="display:contents" dir="ltr"><figure class="block-color-default_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-817b-8e42-e53050d3dbb5"><div style="font-size:1.5em"><img class="icon" src="Jules%20Delapilli%C3%A8re/Instagram_icon.png.webp"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2e0abe75-6957-81b6-a25d-ead9703507e3" class=""><a href="https://www.instagram.com/nameisseluj/">@nameisseluj</a><strong> </strong></p></div></div></figure></div></div></div><div style="display:contents" dir="auto"><div><div style="display:contents" dir="ltr"><figure class="block-color-default_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-81a6-9964-d166f361c633"><div style="width:100%"><div style="display:contents" dir="auto"><p id="2e0abe75-6957-812f-a984-cdb966ac7195" class=""><a href="http://www.linkedin.com/in/jules-delapilliere-3aa41038b">Jules Delapilliere</a><strong> </strong></p></div></div></figure></div></div></div><div style="display:contents" dir="auto"><p id="2e0abe75-6957-8174-80d9-f0e5ccd2a758" class="">
-</p></div></div></div><div style="display:contents" dir="auto"><div id="2e0abe75-6957-819f-af4e-caa1a1e2940b" style="width:75%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-811a-8eb0-d2779acd8c96"><div style="width:100%"><div style="display:contents" dir="auto"><h2 id="2e0abe75-6957-8176-9fc8-eb2a94d4cbfe" class=""><mark class="highlight-purple">A propos de moi</mark></h2></div><div style="display:contents" dir="auto"><hr id="2e0abe75-6957-8161-ba4d-d068bd5657c0"/></div><div style="display:contents" dir="auto"><p id="2e0abe75-6957-81a8-b5c7-ef306a48f1bb" class="">Étudiant en BUT Informatique, je m’intéresse au développement d’applications. Je suis actuellement en recherche d’alternance dans le cadre de ma deuxième année.</p></div></div></figure></div><div style="display:contents" dir="auto"><div id="2e0abe75-6957-81a4-abee-e831530f0702" class="column-list"><div style="display:contents" dir="auto"><div id="2e0abe75-6957-81fd-9688-c5404823c11c" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-default_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-8166-b885-e27cfac9d6a6"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://www.notion.so/icons/user_purple.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2e0abe75-6957-81b7-941f-e8b3ce0e3c15" class=""><mark class="highlight-purple"><strong>Nom</strong></mark></p></div><div style="display:contents" dir="auto"><p id="2e0abe75-6957-81f7-93e2-eb1fc9da0ec8" class="">Delapillière Jules</p></div></div></figure></div></div></div><div style="display:contents" dir="auto"><div id="2e0abe75-6957-816a-80e0-e83e511cdb58" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-default_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-818e-8244-c6266f73df25"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://www.notion.so/icons/graduate_purple.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2e0abe75-6957-81fe-931e-d080940b63fc" class=""><mark class="highlight-purple">Domaine d’étude</mark></p></div><div style="display:contents" dir="auto"><p id="2e0abe75-6957-815a-aeaa-d28709704e1a" class=""><mark class="highlight-default">BUT Informatique - Lannion</mark></p></div></div></figure></div></div></div></div></div><div style="display:contents" dir="auto"><hr id="2e0abe75-6957-81ad-8666-d9058081e959"/></div><div style="display:contents" dir="ltr"><div id="2e0abe75-6957-81c0-b95b-ddd26c598987" class="collection-content"><h4 class="collection-title">Categories</h4><div class="collection-content-wrapper"><table class="collection-content"><colgroup><col style="width:58.333333333333336%"/><col style="width:41.666666666666664%"/></colgroup><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>Name</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Description</th></tr></thead><tbody><tr id="2e0abe75-6957-8153-aab2-ddb02f8e9ec8"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Developpement%202e0abe7569578153aab2ddb02f8e9ec8.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/wrench_pink.svg"/>Developpement</a></td><td class="cell-UPIT">Concevoir, coder, tester et intégrer une solution informatique pour un client</td></tr><tr id="2e0abe75-6957-8153-984e-f02be248bf2d"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Optimiser%202e0abe7569578153984ef02be248bf2d.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/globe_blue.svg"/>Optimiser</a></td><td class="cell-UPIT">Optimisées en fonction de critères spécifiques : temps d’exécution, précision, consommation de ressources</td></tr><tr id="2e0abe75-6957-81a5-902b-c1aed4d080bc"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Administrer%202e0abe75695781a5902bc1aed4d080bc.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/tv_pink.svg"/>Administrer</a></td><td class="cell-UPIT">Installer, configurer, mettre à disposition, maintenir en conditions opérationnelles des infrastructures, des services et des réseaux et optimiser le système informatique d’une organisation</td></tr><tr id="2e0abe75-6957-8192-ae9d-ebabcf9991e6"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Base%20de%20donn%C3%A9e%202e0abe7569578192ae9debabcf9991e6.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/database_purple.svg"/>Base de donnée</a></td><td class="cell-UPIT">Concevoir, gérer, administrer et exploiter les<br/>données de l’entreprise et mettre à disposition toutes les informations pour un bon pilotage de l’entreprise</td></tr><tr id="2e0abe75-6957-81be-823f-d417a00a2be1"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Conduire%20un%20projet%202e0abe75695781be823fd417a00a2be1.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/compose_purple.svg"/>Conduire un projet</a></td><td class="cell-UPIT">Satisfaire les besoins des utilisateurs au regard de la chaîne de valeur du client, organiser et piloter un projet informatique avec des méthodes classiques ou agile</td></tr><tr id="2e0abe75-6957-8147-9a50-cd6aee5fc427"><td class="cell-title"><a href="Jules%20Delapilli%C3%A8re/Categories/Collaborer%202e0abe75695781479a50cd6aee5fc427.html"><img class="icon notion-static-icon" src="https://www.notion.so/icons/meeting_blue.svg"/>Collaborer</a></td><td class="cell-UPIT">Les aptitudes nécessaires pour travailler efficacement dans une équipe informatique</td></tr></tbody></table></div><br/><br/></div></div><div style="display:contents" dir="auto"><p id="2e0abe75-6957-8186-b6ca-c29ee469aa7a" class="">
-</p></div></div></div></div></div><div style="display:contents" dir="auto"><div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-8163-b380-f7d070e81dba"><div style="width:100%"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2e0abe75-6957-81b7-bb1f-c7e06702dbb5"><div style="width:100%"><div style="display:contents" dir="auto"><h2 id="2e0abe75-6957-810b-b178-def4f514c533" class="">Merci de votre visite!</h2></div><div style="display:contents" dir="auto"><p id="2e0abe75-6957-8125-a1f0-c73b08f1e471" class=""><mark class="highlight-gray">Contactez moi ! </mark>↘️</p></div><div style="display:contents" dir="auto"><div id="2e0abe75-6957-81ca-bb67-dcac35773b3a" class="column-list"><div style="display:contents" dir="auto"><div id="2e0abe75-6957-8123-bc6e-ddbeeb3236f1" style="width:31.25%" class="column"><div style="display:contents" dir="auto"><div style="display:contents" dir="auto"><div></div></div></div></div></div><div style="display:contents" dir="auto"><div id="2e0abe75-6957-810e-af69-d4cafae5b62a" style="width:25%" class="column"><div style="display:contents" dir="auto"><div style="display:contents" dir="auto"><div></div></div></div></div></div><div style="display:contents" dir="auto"><div id="2e0abe75-6957-8186-be06-d58aa3f436d2" style="width:21.875%" class="column"><div style="display:contents" dir="auto"><div style="display:contents" dir="auto"><div></div></div></div></div></div><div style="display:contents" dir="auto"><div id="2e0abe75-6957-8180-b108-ffd0916956c5" style="width:21.875%" class="column"><div style="display:contents" dir="auto"><div style="display:contents" dir="auto"><div></div></div></div></div></div></div></div></div></figure></div></div></figure></div></div></div><div style="display:contents" dir="auto"><p id="2e0abe75-6957-81d3-a361-e0685dd2b812" class="">
-</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio BUT Informatique - Jules Delapilliere</title>
+    <style>
+        :root {
+            --bg-main: #FBFBFB;       /* Blanc pur */
+            --bg-secondary: #E9EDF2;  /* Blanc glacé */
+            --bg-card: #FFFFFF;       /* Fond des cartes blanc */
+            --border-color: #C7CFDA;  /* Gris clair */
+            --text-main: #0B0F14;     /* Noir profond */
+            --text-muted: #39424E;    /* Gris ardoise */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(251, 251, 251, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        nav .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem 4rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--text-main);
+            padding-left: 1rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Profil / Présentation */
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .profile-sidebar {
+            border-right: 1px solid var(--border-color);
+            padding-right: 1.5rem;
+        }
+
+        .profile-sidebar h3 {
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .profile-sidebar p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .iut-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .iut-link:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Bouton Téléchargement CV */
+        .cv-button {
+            display: inline-block;
+            background-color: var(--text-main);
+            color: var(--bg-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .cv-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* SYSTÈME DE COMPÉTENCES ACCORDÉON */
+        .comp-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .comp-toggle {
+            display: none;
+        }
+
+        .comp-label {
+            background-color: var(--bg-card);
+            padding: 1.2rem 2rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .comp-label:hover {
+            background-color: var(--bg-secondary);
+            border-color: var(--text-muted);
+        }
+
+        .comp-label::after {
+            content: '┼';
+            font-size: 1rem;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .comp-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            background-color: var(--bg-secondary);
+            border-radius: 0 0 6px 6px;
+            margin-top: -3px;
+            border: 1px solid transparent;
+            border-top: none;
+        }
+
+        .reflexion-box {
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .comp-toggle:checked + .comp-label::after {
+            transform: rotate(45deg);
+            color: var(--text-main);
+        }
+
+        .comp-toggle:checked ~ .comp-content {
+            max-height: 650px;
+            padding: 1.5rem 0;
+            border-color: var(--border-color);
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Liens internes pointant vers les cartes du portfolio */
+        .projet-portfolio-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px dashed var(--border-color);
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .projet-portfolio-link:hover {
+            background-color: var(--border-color);
+            border-bottom-style: solid;
+        }
+
+        /* Bouton "Voir sur GitHub" pour les cartes */
+        .card-github-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid var(--text-main);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            transition: background-color 0.2s, color 0.2s;
+            text-align: center;
+        }
+
+        .card-github-btn:hover {
+            background-color: var(--text-main);
+            color: var(--bg-main);
+        }
+
+        /* Galerie de projets */
+        .projets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .projet-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            scroll-margin-top: 5.5rem; /* Évite que le haut de la carte soit masqué par le menu de navigation fixe */
+        }
+
+        .projet-card:hover {
+            border-color: var(--text-muted);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .projet-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .projet-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: var(--bg-secondary);
+            color: var(--text-main);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            margin-right: 0.3rem;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 4rem;
+            letter-spacing: 0.5px;
+            background-color: var(--bg-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .profile-container { grid-template-columns: 1fr; }
+            .profile-sidebar { border-right: none; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">JULES DELAPILLIERE</div>
+        <ul>
+            <li><a href="#accueil">Profil</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#projets">Projets</a></li>
+        </ul>
+    </nav>
+
+    <section id="accueil">
+        <h2>Mon Profil</h2>
+        <div class="profile-container">
+            <div class="profile-sidebar">
+                <h3>Jules Delapilliere</h3>
+                <p><strong>Localisation :</strong> Rennes / Lannion</p>
+                <p><a href="mailto:jules.delapilliere@etudiant.univ-rennes.fr" class="iut-link">Adresse Mail</a></p>
+                <p><strong>Qualités :</strong> Déterminé, sérieux, autonome.</p>
+                <p><strong>Engagements :</strong> Membre de l'association 100% Handinamique. Ancien leader d'équipe e-sport (semi-pro) sur Valorant.</p>
+            </div>
+            <div>
+                <p class="tagline">Recherche Alternance — Développement Logiciel</p>
+                <p>Actuellement en première année de BUT Informatique à l'<a href="https://iut-lannion.univ-rennes.fr" target="_blank" class="iut-link">IUT de Lannion</a>, je concentre mes travaux sur la conception d'architectures logicielles fiables, l'optimisation algorithmique et la gestion de bases de données sécurisées.</p>
+                
+                <a href="CV.pdf" download="CV_Jules_Delapilliere.pdf" class="cv-button">Télécharger mon CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences">
+        <h2>Mes Compétences</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Cliquez sur une compétence pour déployer le projet associé et son analyse réflexive.</p>
+        
+        <div class="comp-grid">
+
+            <div class="comp-item">
+                <input type="checkbox" id="c1-trigger" class="comp-toggle">
+                <label for="c1-trigger" class="comp-label">Compétence 1 : Réaliser un développement d'application</label>
+                <div class="comp-content">
+                    <div class="reflexion-box">
+                        <div>
+                            <div class="step-title">Projets associés :</div>
+                            <div class="step-content">Code source complet du jeu <a href="#projet-sokoban" class="projet-portfolio-link">Sokoban</a> développé en langage C et du projet <a href="#projet-pymon" class="projet-portfolio-link">Pymon</a> conçu en Python.</div>
+                        </div>
+                        <div>
+                            <div class="step-title">Description détaillée :</div>
+                            <div class="step-content">Le projet Sokoban a nécessité une gestion rigoureuse de la mémoire à bas niveau en C (tableaux dynamiques, pointeurs). Pour Pymon, j'ai appliqué les principes d'une architecture modulaire, isolant le traitement des données graphiques 2D de la logique métier. Cela valide ma capacité à implémenter des applications robustes basées sur un cahier des charges précis.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comp-item">
+                <input type="checkbox" id="c2-trigger" class="comp-toggle">
+                <label for="c2-trigger" class="comp-label">Compétence 2 : Optimiser des applications</label>
+                <div class="comp-content">
+                    <div class="reflexion-box">
+                        <div>
+                            <div class="step-title">Projet associé :</div>
+                            <div class="step-content">Moteurs algorithmiques et scripts du projet <a href="#projet-sokoban-auto" class="projet-portfolio-link">Automatisation Sokoban</a>.</div>
+                        </div>
+                        <div>
+                            <div class="step-title">Description détaillée :</div>
+                            <div class="step-content">Pour automatiser le parcours et la résolution des grilles, j'ai dû analyser la complexité algorithmique afin de limiter la consommation de ressources CPU. Cet exercice critique de structure et de réduction de coûts algorithmiques atteste de ma compétence en optimisation applicative.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comp-item">
+                <input type="checkbox" id="c3-trigger" class="comp-toggle">
+                <label for="c3-trigger" class="comp-label">Compétence 3 : Administrer des systèmes informatiques complexes</label>
+                <div class="comp-content">
+                    <div class="reflexion-box">
+                        <div>
+                            <div class="step-title">Projet associé :</div>
+                            <div class="step-content">Fichiers d'environnement et de configuration du projet <a href="#projet-formatage-auto" class="projet-portfolio-link">Automatisation de formatage</a>.</div>
+                        </div>
+                        <div>
+                            <div class="step-title">Description détaillée :</div>
+                            <div class="step-content">L'utilisation conjointe de Docker pour l'encapsulation de services web PHP et de scripts Shell pour automatiser la pipeline prouve que je maîtrise le déploiement d'environnements virtualisés, isolés et hautement reproductibles.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comp-item">
+                <input type="checkbox" id="c4-trigger" class="comp-toggle">
+                <label for="c4-trigger" class="comp-label">Compétence 4 : Gérer des données de l'entreprise</label>
+                <div class="comp-content">
+                    <div class="reflexion-box">
+                        <div>
+                            <div class="step-title">Projet associé :</div>
+                            <div class="step-content">Modèles relationnels (Rel) et base SQL du projet <a href="#projet-electricite" class="projet-portfolio-link">Comparateur d’offre d’électricité</a>.</div>
+                        </div>
+                        <div>
+                            <div class="step-title">Description détaillée :</div>
+                            <div class="step-content">J'ai entièrement conçu le schéma relationnel sous PostgreSQL pour stocker les métriques d'un réseau électrique. L'écriture de requêtes optimisées (indexation, jointures imbriquées) garantit la cohérence des données et la rapidité des transactions complexes.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comp-item">
+                <input type="checkbox" id="c5-trigger" class="comp-toggle">
+                <label for="c5-trigger" class="comp-label">Compétence 5 : Conduire un projet</label>
+                <div class="comp-content">
+                    <div class="reflexion-box">
+                        <div>
+                            <div class="step-title">Projets associés :</div>
+                            <div class="step-content">Suivi d'avancement et planification des projets <a href="#projet-pymon" class="projet-portfolio-link">Pymon</a> et <a href="#projet-bresil" class="projet-portfolio-link">Site web du Brésil</a>.</div>
+                        </div>
+                        <div>
+                            <div class="step-title">Description détaillée :</div>
+                            <div class="step-content">En tant que chef de projet, j'ai coordonné la répartition des tâches, l'évaluation des risques techniques et le suivi des sprints de développement. Cette rigueur organisationnelle m'a permis de livrer les applications dans le respect des délais imposés.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comp-item">
+                <input type="checkbox" id="c6-trigger" class="comp-toggle">
+                <label for="c6-trigger" class="comp-label">Compétence 6 : Collaborer au sein d'une équipe informatique</label>
+                <div class="comp-content">
+                    <div class="reflexion-box">
+                        <div>
+                            <div class="step-title">Projet associé: </div>
+                            <div class="step-content">Conception de la plateforme web de teasing, mise en place d'un compte à rebours interactif et d'un système d'énigmes collaboratives : <a href="#projet-teasing" class="projet-portfolio-link">Teasing Team Building</a></div>
+                        </div>
+                        <div style="margin-top: 0.5rem;">
+                            <div class="step-title">Description détaillée :</div>
+                            <div class="step-content">Pour créer une dynamique d'attente pour le Team Building,  la collaboration a été la clé. Mon rôle a consisté à animer les réunions ainsi que d'écrire le script du film et d'en faire le montage. Mon background de leader d'équipe (e-sport) a été un atout majeur pour maintenir l'engagement de chacun et arbitrer les choix techniques.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projets">
+        <h2>Vue d'ensemble de mes réalisations</h2>
+        <div class="projets-grid">
+            
+            <div class="projet-card" id="projet-teasing">
+                <div>
+                    <div class="projet-name">Team Building</div>
+                    <div class="projet-meta">2026 | Rôles : Réalisateur, Monteur</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Création d'un évènement de team building pour une entreprise ainsi que d'un flyer et d'un film de teasing.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag">Montage</span><span class="tag">Team Work</span>
+                    </div>
+                </div>
+                <a href="https://github.com/nameisseluj" target="_blank" class="card-github-btn">Voir sur GitHub</a>
+            </div>
+
+            <div class="projet-card" id="projet-pymon">
+                <div>
+                    <div class="projet-name">Pymon</div>
+                    <div class="projet-meta">2024 | Rôles : Backend, Frontend, Chef de projet</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Conception complète d'un jeu vidéo d'aventure 2D intégrant une structure de données SQL.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag">Python</span><span class="tag">SQL</span>
+                    </div>
+                </div>
+                <a href="https://github.com/nameisseluj/Pymon" target="_blank" class="card-github-btn">Voir sur GitHub</a>
+            </div>
+
+            <div class="projet-card" id="projet-sokoban">
+                <div>
+                    <div class="projet-name">Sokoban</div>
+                    <div class="projet-meta">2025 | Rôle : Développeur</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Implémentation native de la logique interne du jeu de grilles en C impératif.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag">Langage C</span><span class="tag">VSCode</span>
+                    </div>
+                </div>
+                <a href="https://github.com/nameisseluj/SAE101" target="_blank" class="card-github-btn">Voir sur GitHub</a>
+            </div>
+
+            <div class="projet-card" id="projet-sokoban-auto">
+                <div>
+                    <div class="projet-name">Automatisation Sokoban</div>
+                    <div class="projet-meta">2025 | Rôle : Algorithmicien</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Recherche et intégration de patterns de résolution automatique pour valider l'optimisation du code.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag">Langage C</span><span class="tag">Optimisation</span>
+                    </div>
+                </div>
+                <a href="https://github.com/nameisseluj" target="_blank" class="card-github-btn">Voir sur GitHub</a>
+            </div>
+
+            <div class="projet-card" id="projet-bresil">
+                <div>
+                    <div class="projet-name">Site web du Brésil</div>
+                    <div class="projet-meta">2025 | Rôles : Backend, Chef de projet</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Développement fullstack collaboratif d'un portail web après maquettage UI/UX complet.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag">HTML/CSS</span><span class="tag">Figma</span>
+                    </div>
+                </div>
+                <a href="https://github.com/nameisseluj" target="_blank" class="card-github-btn">Voir sur GitHub</a>
+            </div>
+
+            <div class="projet-card" id="projet-electricite">
+                <div>
+                    <div class="projet-name">Comparateur d'offres d'électricité</div>
+                    <div class="projet-meta">2025 | Rôle : Data Architect</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Architecture, modélisation conceptuelle et requêtage lourd sur base de données réseau.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag">PostgreSQL</span><span class="tag">Rel</span>
+                    </div>
+                </div>
+                <a href="https://github.com/nameisseluj" target="_blank" class="card-github-btn">Voir sur GitHub</a>
+            </div>
+
+            <div class="projet-card" id="projet-formatage-auto">
+                <div>
+                    <div class="projet-name">Automatisation de formatage</div>
+                    <div class="projet-meta">2026 | Rôle : DevOps</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Automatisation système globale de traitement et isolation réseau via conteneurs applicatifs.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag">Docker</span><span class="tag">PHP</span><span class="tag">Shell</span>
+                    </div>
+                </div>
+                <a href="https://github.com/nameisseluj" target="_blank" class="card-github-btn">Voir sur GitHub</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Portfolio — <strong>Jules Delapilliere</strong> — <a href="https://iut-lannion.univ-rennes.fr" target="_blank" class="iut-link">IUT de Lannion</a> — Juin 2026</p>
+    </footer>
+
+</body>
+</html>
