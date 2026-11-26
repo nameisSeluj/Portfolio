@@ -1,0 +1,373 @@
+/* ==========================================================================
+   Variables & Thèmes (Clair / Sombre)
+   ========================================================================== */
+:root {
+  --bg: #e8e2c8;
+  --panel: #f6f1da;
+  --ink: #2a2a3a;
+  --muted: #55526a;
+  --a: #d6336c;
+  --b: #2b7de9;
+  --c: #2f9e44;
+  --wall: #6b6585;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14122a;
+    --panel: #201d40;
+    --ink: #f1eeff;
+    --muted: #b0abd6;
+    --a: #ff6b9d;
+    --b: #5aa9ff;
+    --c: #69db7c;
+    --wall: #4a4580;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #14122a;
+  --panel: #201d40;
+  --ink: #f1eeff;
+  --muted: #b0abd6;
+  --a: #ff6b9d;
+  --b: #5aa9ff;
+  --c: #69db7c;
+  --wall: #4a4580;
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   Base & Typographie
+   ========================================================================== */
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font: 16px/1.65 ui-monospace, Menlo, Consolas, "Courier New", monospace;
+  /* Motif de grille rétro en arrière-plan */
+  background-image: 
+    linear-gradient(var(--panel) 1px, transparent 1px),
+    linear-gradient(90deg, var(--panel) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.px {
+  font-family: "Press Start 2P", ui-monospace, Menlo, monospace;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+/* ==========================================================================
+   Navigation & Hero
+   ========================================================================== */
+nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 0;
+  font-size: 0.6rem;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--a);
+}
+
+.hero {
+  padding: 48px 0 36px;
+}
+
+.chip {
+  display: inline-block;
+  font-size: 0.55rem;
+  padding: 7px 10px;
+  border: 3px solid var(--ink);
+  background: var(--c);
+  color: #111;
+  margin: 0 6px 8px 0;
+}
+
+.chip-location {
+  background: var(--b);
+  color: #fff;
+}
+
+h1 {
+  font-size: clamp(1.3rem, 5.5vw, 2.3rem);
+  margin: 18px 0 14px;
+  text-shadow: 4px 4px 0 var(--a);
+}
+
+.role {
+  font-size: 1.1rem;
+  margin: 0 0 6px;
+}
+
+.sub {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 0 24px;
+}
+
+/* ==========================================================================
+   Boutons
+   ========================================================================== */
+.btn {
+  display: inline-block;
+  font-size: 0.62rem;
+  padding: 13px 16px;
+  margin: 6px 8px 6px 0;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+}
+
+.btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.btn.hot {
+  background: var(--a);
+  color: #fff;
+}
+
+/* ==========================================================================
+   Sections & Cartes
+   ========================================================================== */
+section {
+  padding: 38px 0;
+}
+
+h2 {
+  font-size: 0.9rem;
+  margin: 0 0 20px;
+  color: var(--b);
+}
+
+h2::before {
+  content: "▶ ";
+  color: var(--a);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  font-size: 0.7rem;
+  margin: 0 0 10px;
+}
+
+.card p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* Tags & Badges */
+.tags {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border: 2px solid var(--ink);
+  background: var(--bg);
+}
+
+.repo {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 0.55rem;
+  color: var(--b);
+  text-decoration: none;
+}
+
+.repo:hover {
+  color: var(--a);
+}
+
+.badge {
+  font-size: 0.5rem;
+  padding: 5px 7px;
+  border: 2px solid var(--ink);
+  display: inline-block;
+  margin: 0 6px 10px 0;
+}
+
+.done {
+  background: var(--c);
+  color: #111;
+}
+
+.wip {
+  background: var(--b);
+  color: #fff;
+}
+
+.perso {
+  background: var(--a);
+  color: #fff;
+}
+
+.cours {
+  background: #f59f00;
+  color: #111;
+}
+
+/* Inventaire */
+.inv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.inv span {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border: 3px solid var(--ink);
+  background: var(--bg);
+}
+
+.inv.fav span {
+  background: var(--a);
+  color: #fff;
+  font-weight: 700;
+}
+
+.lbl {
+  font-size: 0.58rem;
+  color: var(--muted);
+  margin: 14px 0 8px;
+}
+
+/* ==========================================================================
+   Mini-jeu Sokoban
+   ========================================================================== */
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+#board {
+  display: grid;
+  gap: 2px;
+  padding: 8px;
+  background: var(--ink);
+  outline: none;
+  max-width: 100%;
+}
+
+#board:focus-visible {
+  box-shadow: 0 0 0 4px var(--a);
+}
+
+#board span {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: var(--panel);
+}
+
+#board .wall {
+  background: var(--wall);
+}
+
+#board .goal {
+  color: var(--a);
+}
+
+#board .box-ok {
+  background: var(--c);
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 52px);
+  gap: 6px;
+}
+
+.dpad .btn {
+  margin: 0;
+  padding: 12px 0;
+  text-align: center;
+}
+
+.msg {
+  font-size: 0.58rem;
+  min-height: 1.5em;
+  text-align: center;
+}
+
+.game-hint {
+  text-align: center;
+}
+
+/* ==========================================================================
+   Contact & Footer
+   ========================================================================== */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+footer {
+  padding: 28px 0 40px;
+  font-size: 0.52rem;
+  color: var(--muted);
+  text-align: center;
+}
